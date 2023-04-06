@@ -1,0 +1,23 @@
+VENTTIKORTTIPELI (c) ANNI ORILÄHDE 2022
+Ohje
+
+Ventti pelin idea on saada nostettua kortteja, jotta kädessä olevien korttien summa on luku 21 tai sen alle.
+Pelissä pelaaja pelaa Dealeria vastaan. Pelin voittaa se, jonka kädessä olevien summa on joko luku 21 tai kumpi on lähellä lukua 21.
+
+Päävalikosta voidaan aloittaa peli painamalla enter-näppäintä.
+O - Näppäin tulostaa pelin ohjeet
+T - Näppäin tulostaa pelatut pelit
+E - Näppäin sulkee ohjelman
+
+Pelaaja aloittaa pelin painamalla enteriä. Pelaajalle ja "Dealerille" jaetaan kummallekkin aluksi 2 korttia.
+Jos kädessä olevien korttien summa on pienempi kuin luku 21, voidaan päättää nostetaanko kortti vai jäädäänkö siihen. 
+1 - Näppäin lopettaa korttien nostamisen
+2 - Näppäin nostaa uuden kortin
+
+Tärkeää
+
+Ohjelma tallentaa ensimmäisen pelatun pelin jälkeen tiedoston "ventti_score.txt" tietokoneen kotihakemistoon.
+
+Windowsissa: C:\Users\(käyttäjännimi)\
+Mac: /home/(käyttäjänimi)/
+Linux: /home/(käyttäjänimi)/

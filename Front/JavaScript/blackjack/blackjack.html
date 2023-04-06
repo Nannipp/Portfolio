@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--(c)Anni Orilähde, 2021-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>  
+            body {
+                background: rgb(75,35,35);
+                background: radial-gradient(circle, rgba(75,35,35,1) 0%, rgba(45,21,21,1) 52%, rgba(0,0,0,1) 100%);
+                margin: 0;
+                padding: 0;
+            }
+            #otsikko {
+                text-align: center;
+                font-size: 50px;
+                font-weight: 800;
+                margin: 20px;
+                text-shadow: rgb(168, 168, 168) 2px 2px;
+            }
+            #matto {
+                background-color: #231F20;
+                text-align: center;
+                height: fit-content;
+                padding: 20px;
+            }
+            .napit {
+                padding: 20px;
+            }
+            input {
+                font-size: 15px;
+                padding: 5px;
+                color: rgb(255, 0, 0);
+                background-color: rgb(44, 44, 44);
+                border-radius: 5px;
+                border: none;
+                box-shadow: rgb(168, 168, 168) 2px 2px;
+            }
+            input:hover {
+                background-color: rgba(255, 0, 0, 0.288);
+            }
+            .pelaajat {
+                display: flex;
+                padding: 20px;
+            }
+            #player {
+                background-color: rgb(51, 51, 51);
+                height: 300px;
+                width: 800px;
+                padding: 50px;
+                margin: 20px;
+                box-shadow:  rgba(255, 0, 0, 0.288) 6px 2px;
+            }
+            #dealer {
+                background-color:rgb(51, 51, 51);
+                height: 300px;
+                width: 800px;
+                padding: 50px;
+                margin: 20px;
+                box-shadow:  rgba(255, 0, 0, 0.288) 6px 2px;
+            }
+            .korttipaikat {
+                display: inline-flex;     
+            }
+            .korttipaikat #playerkortti1 {
+                border-radius: 8px;
+            }
+            .korttipaikat #playerkortti2 {
+                border-radius: 8px;
+            }
+            .korttipaikat #playerkortti3 {
+                border-radius: 8px;
+            }
+            .korttipaikat #playerkortti4 {
+                border-radius: 8px;
+            }
+            .korttipaikat #playerkortti5 {
+                border-radius: 8px;
+            }
+            #playerkorttiNosto {
+                display: none;
+                border-radius: 8px;
+            }
+            #playerkorttiNosto1 {
+                display: none;
+                border-radius: 8px;
+            }
+            #DealerkorttiNosto1 {
+                display: none;
+            }
+            #DealerkorttiNosto2 {
+                display: none;
+            }
+            .korttipaikat #dealerkortti1 {
+                border-radius: 8px;
+            }
+            .korttipaikat #dealerkortti2 {
+                border-radius: 8px;
+            }
+            .korttipaikat #dealerkortti3 {
+                border-radius: 8px;
+            }
+            .korttipaikat #dealerkortti4 {
+                border-radius: 8px;
+            }
+            .korttipaikat #dealerkortti5 {
+                border-radius: 8px;
+            }
+            h3 {
+                font-size: 30px;
+                text-shadow: rgb(168, 168, 168) 2px 2px;
+                border-radius: 8px;
+            }
+            .result {
+                text-align: center;
+            }
+            table {
+                text-align: center;
+                font-size: 30px;
+                width: 100%;
+                color: rgba(255, 0, 0, 0.288);
+                text-shadow: rgb(168, 168, 168) 2px 2px;
+                border-style: dotted;
+            }
+            h4 {
+                color:rgba(255, 0, 0, 0.288);
+                font-size: 30px;
+                text-shadow: rgb(168, 168, 168) 2px 2px;
+                border-radius: 8px;
+                margin-bottom: 5px; 
+            }
+            #tulos {
+                color:rgba(255, 0, 0, 0.288);
+                font-size: 30px;
+                text-shadow: rgb(168, 168, 168) 2px 2px;
+                border-radius: 8px; 
+            }
+            @media screen and (max-width:1200px){
+                body {
+                    height: fit-content;
+                }
+                .pelaajat{
+                    flex-direction: column;
+                }
+                .matto {
+                    height: 5000px;
+                }
+                #player {
+                    width:auto;
+                    height: auto;
+                }
+                #dealer {
+                    width:auto;
+                    height: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--OTSIKOINTI-->
+        <header id="otsikko">BLACKJACK</header>
+        <!--KORTTIJAKOALUE-->
+        <div id="matto">
+            <!--NAPPIALUEELLE KIINNITETTY TULOSALUE-->
+            <div id="jakoalue">
+                <form class="napit">
+                <input type="button" value="NEW GAME" onclick="startGAME()" id="newGame"></input>
+                <input type="button" value="DRAW" onclick="drawCARD()" id="drawButton"></input>
+                <input type="button" value="CHECK" onclick="checkGAME()" id="check"></input>
+                </form>
+            <div class=pelaajat>    
+                <div id="player">
+                    <h3>Player</h3>
+                        <div class="korttipaikat">
+                            <div id="playerkortti1"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkortti2"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkortti3"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkortti4"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkortti5"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkorttiNosto"><img src="/img/backSide.png" alt=""></div>
+                            <div id="playerkorttiNosto1"><img src="/img/backSide.png" alt=""></div>
+                        </div>
+                </div>
+                <div id ="dealer">
+                    <h3>Dealer</h3>
+                        <div class="korttipaikat">
+                            <div id="dealerkortti1"><img src="/img/backSide.png" alt=""></div>
+                            <div id="dealerkortti2"><img src="/img/backSide.png" alt=""></div>
+                            <div id="dealerkortti3"><img src="/img/backSide.png" alt=""></div>
+                            <div id="dealerkortti4"><img src="/img/backSide.png" alt=""></div>
+                            <div id="dealerkortti5"><img src="/img/backSide.png" alt=""></div>
+                            <div id="DealerkorttiNosto1"><img src="/img/backSide.png" alt=""></div>
+                            <div id="DealerkorttiNosto2"><img src="/img/backSide.png" alt=""></div>
+                        </div>
+                </div>
+            </div>
+            <div id="result"></div>
+            <table>
+                <tr>
+                    <th>Player hand</th>
+                    <th>Dealer hand</th>
+                </tr>
+                <tr>
+                    <td id="playerCards">0</td>
+                    <td id="dealerCards">0</td>
+                </tr>
+            </table>
+            <h4>RESULT</h4>
+            <div id="tulos"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var kasi = [];
+        var dealer = [];
+        var pakka = [h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14];
+        
+        function startGAME() {
+
+            kasi = [];
+            dealer = [];
+            console.clear();
+            document.getElementById('tulos').innerText = " ";
+            document.getElementById('dealerCards').innerText = " ";
+            document.getElementById('playerkorttiNosto1').innerText =" ";
+
+            //ARVOTAAN OMAN KÄDEN KORTIT
+            var rand1 = Math.floor(Math.random() * 13) + 1;
+            //ALLA OLEVA TULOSTAA KUVAN VASTAAMAAN SUMMAA
+            document.getElementById('playerkortti1').innerHTML=`
+                <img src="/img/heart/h${rand1}.png">
+            `;
+
+            var rand2 = Math.floor(Math.random() * 13) + 1;
+            //ALLA OLEVA TULOSTAA KUVAN VASTAAMAAN SUMMAA
+            document.getElementById('playerkortti2').innerHTML=`
+                <img src="/img/heart/h${rand2}.png">
+            `;
+
+            randplayer = rand1 + rand2;
+            kasi.push(rand1, rand2);
+            console.log("Kädessäsi olevat kortit:", kasi);
+
+            document.getElementById('playerCards').innerText = randplayer;
+            
+            //ALLA ARVOTAAN SAMAAN AIKAAN VASTUSTAJAN KÄDEN KORTIT
+            var rand3 = Math.floor(Math.random() * 13) + 1;
+            //ALLA OLEVA TULOSTAA KUVAN VASTAAMAAN SUMMAA
+            document.getElementById('dealerkortti1').innerHTML=`
+                <img src="/img/heart/h${rand3}.png">
+            `;
+            var rand4 = Math.floor(Math.random() * 13) + 1;
+            //ALLA OLEVA TULOSTAA KUVAN VASTAAMAAN SUMMAA
+            document.getElementById('dealerkortti2').innerHTML=`
+                <img src="/img/heart/h${rand4}.png">
+            `;
+            randdealer = rand3 + rand4;
+            dealer.push(rand3, rand4);
+            console.log("Vastustajan kortit:", dealer);
+
+            //Alla näkyvyys korttipaikoille ja pelinapille
+            document.getElementById('drawButton').style.visibility='visible';
+            //Oma käsi
+            document.getElementById('playerkortti3').style.display='none';
+            document.getElementById('playerkortti4').style.display='none';
+            document.getElementById('playerkortti5').style.display='none';
+            document.getElementById('playerkorttiNosto').style.display='none';
+            //Vastustajan käsi
+            document.getElementById('dealerkortti1').style.display='none';
+            document.getElementById('dealerkortti2').style.display='none';
+            document.getElementById('dealerkortti3').style.display='none';
+            document.getElementById('dealerkortti4').style.display='none';
+            document.getElementById('dealerkortti5').style.display='none';
+            document.getElementById('DealerkorttiNosto1').style.display='inline';
+            document.getElementById('DealerkorttiNosto2').style.display='inline';
+
+            if (randplayer>21) {
+                checkGAME();
+            }
+        }
+        function drawCARD() {
+            document.getElementById('playerkorttiNosto').style.display='none';
+            var uusiNosto = Math.floor(Math.random() * 13) + 1;
+            kasi.push(uusiNosto);
+            document.getElementById('playerkorttiNosto1').innerHTML+=`
+                <img src="/img/heart/h${uusiNosto}.png"/>
+            `;
+            
+            document.getElementById('playerkorttiNosto1').style.display='inline';
+
+            console.log("Käsissäsi olevat kortit:", kasi);
+            randplayer = randplayer + kasi[kasi.length-1];
+            document.getElementById('playerCards').innerText = randplayer;
+
+            if (randplayer>21) {
+                checkGAME();
+            }
+                
+        }
+        function checkGAME() {
+                if (randplayer>21 && randdealer>21){
+                    document.getElementById('tulos').innerText = "BOTH OUT"
+                }
+                else if (randplayer>randdealer && randplayer <= 21 || randdealer>21) {
+                    document.getElementById('tulos').innerText = "YOU WIN, DEALER LOSE."
+                }
+                else if (randplayer>21) {
+                    document.getElementById('tulos').innerText = "YOU LOSE."
+                }
+                else if (randplayer==randdealer){
+                    document.getElementById('tulos').innerText = "IT'S A TIE."
+                }
+                else {
+                    document.getElementById('tulos').innerText = "YOU LOSE, DEALER WINS."
+                }
+                document.getElementById('dealerCards').innerText = randdealer;
+                //Piilotetaan draw nappula
+                document.getElementById('drawButton').style.visibility='hidden';
+                //Paljastetaan vastustajan käsi
+                document.getElementById('dealerkortti1').style.display='inline';
+                document.getElementById('dealerkortti2').style.display='inline';
+                document.getElementById('DealerkorttiNosto1').style.display='none';
+                document.getElementById('DealerkorttiNosto2').style.display='none';
+            }
+    </script>
+</html>

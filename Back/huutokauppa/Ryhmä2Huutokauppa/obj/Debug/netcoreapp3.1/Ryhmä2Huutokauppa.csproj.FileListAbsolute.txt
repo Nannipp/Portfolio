@@ -1,0 +1,3 @@
+C:\Users\anni-\OneDrive - Jyväskylän koulutuskuntayhtymä Gradia\2.vuosi\Ohjelmiston prototyypin toteuttaminen\Perusohjelmointitaidot\Ryhmätyö Team Ahma\Ryhmä2Huutokauppa\Ryhmä2Huutokauppa\obj\Debug\netcoreapp3.1\Ryhmä2Huutokauppa.csprojAssemblyReference.cache
+C:\Users\anni-\OneDrive - Jyväskylän koulutuskuntayhtymä Gradia\2.vuosi\Ohjelmiston prototyypin toteuttaminen\Perusohjelmointitaidot\Ryhmätyö Team Ahma\Ryhmä2Huutokauppa\Ryhmä2Huutokauppa\obj\Debug\netcoreapp3.1\Ryhmä2Huutokauppa.AssemblyInfoInputs.cache
+C:\Users\anni-\OneDrive - Jyväskylän koulutuskuntayhtymä Gradia\2.vuosi\Ohjelmiston prototyypin toteuttaminen\Perusohjelmointitaidot\Ryhmätyö Team Ahma\Ryhmä2Huutokauppa\Ryhmä2Huutokauppa\obj\Debug\netcoreapp3.1\Ryhmä2Huutokauppa.AssemblyInfo.cs

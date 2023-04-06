@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="utf-8">
+        <script>
+
+            var summataulu = [];//tehdään lista vastauksille
+            var kirjoita = summataulu.toString();
+            
+            //aktivoituu kun käytetään laske -nappia
+            function calculate() {
+
+                var ensiLuku = parseInt(document.getElementById("summa1").value); //hakee käyttäjän syöttämän arvon numeraalisena
+                var toisLuku = parseInt(document.getElementById("summa2").value); //hakee käyttäjän syöttämän arvon numeraalisena
+                var type = document.getElementsByName("type"); //type as in 4 samannimistä radiobuttonia
+                var summa;
+                
+                //Määritellään napeille toiminto
+                if(type[0].checked){ // eli +
+                    
+                    summa = ensiLuku + toisLuku;
+
+                    summataulu.push(summa);
+
+                    tulos.innerHTML = "Tulos on " + summa;
+                    }
+                    else if(type[1].checked){ // -
+                            summa = ensiLuku - toisLuku;
+
+                            summataulu.push(summa);
+
+                            tulos.innerHTML = "Tulos on " + summa;
+                        }
+                        else if(type[2].checked){ // *
+                            summa = ensiLuku * toisLuku;
+
+                            summataulu.push(summa);
+
+                            tulos.innerHTML = "Tulos on " + summa;
+                        }
+                        else if(type[3].checked){ // /
+                            summa = ensiLuku / toisLuku;
+
+                            summataulu.push(summa);
+
+                            tulos.innerHTML = "Tulos on " + summa;
+                        }
+                        else {
+                            alert("Valitse laskentatapa");
+                        }
+
+                console.log(summataulu.length);
+                console.log(summataulu);
+            }
+            //painaessaan tulostaa arrayn 3 viimeisintä numeroa
+            function history() {
+
+                //Tehdään muuttujat Arrayssa oleville summille jotka tulostettaan 3 viimeisintä
+                var viimeisin = summataulu[summataulu.length-3]
+                var toisiks = summataulu[summataulu.length-2]
+                var kolmas = summataulu[summataulu.length-1]
+
+                document.getElementById("historia").innerHTML = "3 edellistä vastausta on : " + viimeisin + ", " + toisiks +", "+ kolmas;
+            }
+        </script>
+        <style>
+            Body {
+                background-color: rgb(127, 179, 149);
+                background-image: url("einstein100th.jpg");
+                width: 800px;
+            }
+            .kehys {
+                border-style: solid;
+                padding: 0px 20px;
+                width: 300px;
+                background-color: rgb(176, 206, 200);
+                text-align: center;
+            }
+            button {
+                margin: 20px 0px 0px 0px;
+                background-color: rgb(129, 233, 207);
+            }
+            .nappulat {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="kehys">
+            <h1>Laskuri</h1>
+            <h4>Hyötykäyttöön oleva plus-, vähennys-, kerto- ja jakolaskuri</h4>
+            <input id="summa1"><br>
+            <input id="summa2"><br>
+                <div class="nappulat">
+                    <p>Valitse laskutapa:</p>
+                    <input type="radio" name="type" value="+"/>+
+                    <input type="radio" name="type" value="-"/>-
+                    <input type="radio" name="type" value="*"/>*
+                    <input type="radio" name="type" value="/"/>/
+                    <br>
+                </div>
+            <button id="nappi" onclick="calculate()">Laske</button>
+            <p id="tulos"></p>
+            <button id="nappi" onclick="history()">Näytä 3 edellistä tulosta</button>
+            <p id="historia"></p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="utf-8">
+        <script>
+          
+            function calculate() {
+
+                var tilisumma = parseInt(document.getElementById("tilisumma").value); //hakee käyttäjän syöttämän arvon numeraalisena
+                var korko = 1 + (1.82 / 100); //1,82% on korko
+                var type = document.getElementsByName("type"); //type as in 3 samannimistä radiobuttonia
+                var vuosi; //tyhjä var elementti, alla määritellään radiobuttoneilla vuosi
+
+                if(type[0].checked){ // eli vuosi 1
+                    vuosi = parseInt(type[0].value);
+                    }
+                    else if(type[1].checked){ //vuosi 3
+                            vuosi = parseInt(type[1].value);
+                        }
+                        else if(type[2].checked){ // vuosi 5
+                            vuosi = parseInt(type[2].value);
+                        }
+                        else {
+                            alert("Valitse vuosi");
+                        }
+                //lasketaan korkotekijä, eli korko potensiin vuosi
+                var korkotekija = Math.pow(korko, vuosi);
+                //summa on tilinsumma kerrottuna korkotekijällä, jolloin saadaan tilille koron jälkeen kasvanut summa.
+                var summa = Math.floor(tilisumma * korkotekija);
+                korkosumma.innerHTML= "Rahanmäärä on " + summa;
+            }
+        </script>
+        <style>
+            Body {
+                background-color: rgb(182, 139, 152);
+            }
+            .kehys {
+                border-style: solid;
+                padding: 0px 20px;
+                width: 300px;
+                background-color: rgb(206, 176, 182);
+                text-align: center;
+            }
+            #tilisumma {
+                background-color: rgb(206, 176, 182);
+                border-radius: 10px;
+            }
+            button {
+                margin: 20px 0px 0px 0px;
+                background-color: rgb(206, 176, 182);
+            }
+            .nappulat {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="kehys">
+            <h1>Korkolaskuri</h1>
+            <h4>Laskurilla pystyt laskemaan, paljonko 1,82% korko kasvattaa tilinsummaa</h4>
+            <p>Tilillä olevan rahan määrä:</p> 
+            <input id="tilisumma"><br>
+                <div class="nappulat">
+                    <p>Kuinka monta vuotta säästetään:</p>
+                    <input type="radio" name="type" value="1"/>1.
+                    <input type="radio" name="type" value="3"/>3.
+                    <input type="radio" name="type" value="5"/>5.<br>
+                </div>
+            <button id="nappi" onclick="calculate()">Laske korko</button>
+            <p id="korkosumma">   </p>
+        </div>
+    </body>
+</html>

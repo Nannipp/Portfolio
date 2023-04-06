@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--(c)Anni Orilähde, 2020-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: rgb(70, 101, 146);
+            }
+            h3 {
+                position: relative;
+                font-size: 20px;
+                color: rgb(255, 255, 255);
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+            #form {
+                position: relative;
+            }
+            #form #email {
+                width: 300px;
+                background-color: rgb(33, 47, 70) ;
+                outline: none;
+                border: none;
+                padding: 10px;
+                border-radius: 6px;
+                color: #fff;
+                font-style: 18px;
+            }
+            #form .inputbox {
+                position: relative;
+            }
+            #text {
+                display: block;
+                color: #000;
+                font-weight: 500i;
+                font-style: italic;
+                padding: 5px;
+            }
+            #form.invalid .inputbox:before {
+                content: '';
+                position: absolute;
+                right: 12px;
+                top: 12px;
+                width: 24px;
+                height: 24px;
+                background: url(invalid.png);
+                background-size: cover;
+                z-index: 1000;
+                
+            }
+            #form.valid .inputbox:before {
+                content: '';
+                position: absolute;
+                right: 12px;
+                top: 12px;
+                width: 24px;
+                height: 24px;
+                background: url(valid.png);
+                background-size: cover;
+                z-index: 1000;
+                }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h3>Tarkista sähköpostiosoitteesi</h3>
+            <form id="form" action="#">
+                <div class="inputbox">
+                    <input type="text" name="" id="email"
+                    placeholder="Syötä Email Osoiteesi" onkeydown="validation()">
+                    <span id="text"></span>
+                </div>
+                <script>
+                    //Tee ohjelma, joka tarkistaa sähköpostiosoitteesi kelvollisuuden ja kirjoittaa vastauksen konsoliin. Ohjelman tulee hyödyntää funktioita.
+                    function validation() {    
+                        //TEHDÄÄN OLIOT, JOTKA KERÄÄ KÄYTTÄJÄN SYÖTTÄMÄN DATAN
+                        var form = document.getElementById("form");
+                        var email = document.getElementById("email").value;
+                        var text = document.getElementById("text");
+                        var pattern = /^[^ ]+@+[a-z]{3,7}\.[a-z]{2,3}/;
+                        //ALLA OLEVA IF- MÄÄRITTÄÄ OSOITTEEN OIKEAKSI, JOS YLLÄOLEVAT EHDOT TÄYTTYY
+                        if (email.match(pattern)){
+                            
+                            form.classList.add("valid");
+                            form.classList.remove("invalid");
+                            text.innerHTML = "Sähköpostiosoitteesi on oikea";
+                            text.style.color = "#00ff00";
+                        }
+                        //ELSELLÄ JOS PYYHKII TAI OSOITERIVI ON VAJAA, TULEE ILMOITUS
+                        else {
+        
+                            form.classList.remove("valid");
+                            form.classList.add("invalid");
+                            text.innerHTML = "Sähköpostiosoitteesi on väärin";
+                            text.style.color = "#ff0000"
+
+                        }
+                        //ALLA OLEVA ON NEUTRAALI, JOS RIVILLÄ EI OLE MITÄÄN
+                        if (email == ""){
+                            
+                            form.classList.remove("valid");
+                            form.classList.remove("invalid");
+                            text.innerHTML = "";
+                            text.style.color = "00ff00";
+                        }
+                        //var regex = /^([a-zA-Z0-9_äöåÄÅÖ.-])+@([a-zA-Z0-9-]+\.)+([a-zA-Z0-9]{2,4})$/;
+                        //console.log(tarkistaEmail('aamu.teho@gradia.com'))
+                    }
+                </script>
+            </form>
+        </div>
+    </body>
+</html>
