@@ -10,8 +10,7 @@ TTV22S5
 
 ### Kurssilla rakennettu tietoverkko
 
-Tämä on viittaus kuvioon
-- [KUVA](tietoverkko/documentation/E17/E17-log.png)
+--> documentation/E17/E17-log.png)
 
 ### Konfiguraatio
 
