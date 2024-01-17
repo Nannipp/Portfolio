@@ -10,11 +10,8 @@ TTV22S5
 
 ### Kurssilla rakennettu tietoverkko
 
-Looginen:
---> documentation/E17/E17-log.png
-
-Fyysinen: 
---> documentation/E17/E17-fys.png
+![Looginen](./documentation/E17/E17-log.png)
+![Fyysinen](documentation/E17/E17-fys.png)
 
 ### Konfiguraatio
 
