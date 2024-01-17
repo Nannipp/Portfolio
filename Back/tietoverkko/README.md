@@ -18,4 +18,4 @@ Fyysinen:
 
 ### Konfiguraatio
 
-- [Konfiguraatiot](/documentation/E17)
+- [Konfiguraatiot](./documentation/E17)
